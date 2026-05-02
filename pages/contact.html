@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 | 东太平洋科学研究院 EPSRI</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div id="particles-container"></div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.5" transform="rotate(30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-cn">东太平洋科学研究院</span>
+                    <span class="logo-en">EPSRI</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">首页</a>
+                <a href="research.html" class="nav-link">研究方向</a>
+                <a href="team.html" class="nav-link">研究团队</a>
+                <a href="publications.html" class="nav-link">论文库</a>
+                <a href="news.html" class="nav-link">新闻动态</a>
+                <a href="join-us.html" class="nav-link">加入我们</a>
+                <a href="about.html" class="nav-link">关于我们</a>
+                <a href="contact.html" class="nav-link active">联系我们</a>
+            </div>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div>
+            <span class="page-header-tag">CONTACT US</span>
+            <h1>联系我们</h1>
+            <p>无论是学术合作、加入团队还是访问交流，我们都期待与您连接</p>
+        </div>
+    </section>
+
+    <section style="padding:60px 40px 120px;">
+        <div class="content-section">
+            <div class="contact-grid">
+                <!-- 联系信息 -->
+                <div class="reveal-left">
+                    <h3 style="font-size:24px; margin-bottom:32px; letter-spacing:2px;">联系方式</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-detail">
+                            <h4>电子邮件</h4>
+                            <p>contact@epsri.org<br>research@epsri.org（科研合作）</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-detail">
+                            <h4>地址</h4>
+                            <p>东太平洋科学城<br>EPSRI 国际研究中心</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-detail">
+                            <h4>网站</h4>
+                            <p>www.epsri.org</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">👥</div>
+                        <div class="contact-detail">
+                            <h4>加入我们</h4>
+                            <p>诚邀博士后研究员及科研合作伙伴<br>join@epsri.org</p>
+                        </div>
+                    </div>
+
+                    <!-- 合作意向 -->
+                    <div style="margin-top:40px; padding:28px; background:var(--bg-card); border:1px solid rgba(123,47,255,0.3); border-radius:12px; border-left:3px solid var(--secondary);">
+                        <h4 style="color:var(--secondary); margin-bottom:12px; font-size:15px; letter-spacing:1px;">合作机会</h4>
+                        <ul style="list-style:none; font-size:13px; color:var(--text-secondary);">
+                            <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">▸ 联合研究项目 / Joint Research Projects</li>
+                            <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">▸ 科研成果转化合作 / Technology Transfer</li>
+                            <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">▸ 访问学者项目 / Visiting Scholar Program</li>
+                            <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">▸ 研究生联培 / Joint PhD Training</li>
+                            <li style="padding:6px 0;">▸ 仪器设备共享 / Shared Instrumentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 联系表单 -->
+                <div class="reveal-right contact-form-wrap">
+                    <h3 style="font-size:24px; margin-bottom:32px; letter-spacing:2px;">发送消息</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>姓名 *</label>
+                                <input type="text" placeholder="您的姓名" required>
+                            </div>
+                            <div class="form-group">
+                                <label>邮箱 *</label>
+                                <input type="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>机构 / 单位</label>
+                                <input type="text" placeholder="所属机构">
+                            </div>
+                            <div class="form-group">
+                                <label>联系目的</label>
+                                <select>
+                                    <option value="">请选择...</option>
+                                    <option>科研合作</option>
+                                    <option>加入团队</option>
+                                    <option>访问交流</option>
+                                    <option>技术转化</option>
+                                    <option>媒体采访</option>
+                                    <option>其他</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>感兴趣的研究方向</label>
+                            <select>
+                                <option value="">请选择...</option>
+                                <option>热电材料</option>
+                                <option>金属-有机框架 (MOF)</option>
+                                <option>先进粉体材料</option>
+                                <option>农药天然产物合成</option>
+                                <option>多个方向</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>留言内容 *</label>
+                            <textarea placeholder="请描述您的合作意向、研究背景或希望了解的内容..." required style="min-height:150px;"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width:100%; padding:16px; font-size:15px;">
+                            发送消息 →
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div style="margin-top:80px;">
+                <div class="section-header" style="margin-bottom:40px;">
+                    <div class="section-tag">FAQ</div>
+                    <h2 class="section-title">常见问题</h2>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap:20px;">
+                    <div style="padding:24px 28px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px;" class="reveal">
+                        <h4 style="color:var(--primary); margin-bottom:12px; font-size:15px;">如何申请访问学者？</h4>
+                        <p style="font-size:13px; color:var(--text-secondary); line-height:1.7;">请发送个人简历、研究计划（1-2页）及两封推荐信至 visit@epsri.org，我们将在两周内回复。</p>
+                    </div>
+                    <div style="padding:24px 28px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px;" class="reveal">
+                        <h4 style="color:var(--primary); margin-bottom:12px; font-size:15px;">是否接受博士后申请？</h4>
+                        <p style="font-size:13px; color:var(--text-secondary); line-height:1.7;">是的，各课题组长期欢迎博士后申请。请联系感兴趣课题组的PI，附上完整简历和代表性论文。</p>
+                    </div>
+                    <div style="padding:24px 28px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px;" class="reveal">
+                        <h4 style="color:var(--primary); margin-bottom:12px; font-size:15px;">如何开展科研合作？</h4>
+                        <p style="font-size:13px; color:var(--text-secondary); line-height:1.7;">欢迎通过邮件联系，简述合作背景和设想。我们对各类合作形式（联合项目、学生互访、共享设备等）持开放态度。</p>
+                    </div>
+                    <div style="padding:24px 28px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px;" class="reveal">
+                        <h4 style="color:var(--primary); margin-bottom:12px; font-size:15px;">成果转化如何咨询？</h4>
+                        <p style="font-size:13px; color:var(--text-secondary); line-height:1.7;">EPSRI设有专门的技术转化对接团队，请通过 tech@epsri.org 联系，我们会安排专业人员与您对接。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                    <div>
+                        <div class="footer-logo-cn">东太平洋科学研究院</div>
+                        <div class="footer-logo-en">EPSRI</div>
+                    </div>
+                </div>
+                <p class="footer-desc">致力于化学前沿研究，推动科学技术进步。</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <a href="../index.html">首页</a>
+                    <a href="research.html">研究方向</a>
+                    <a href="publications.html">最新文献</a>
+                    <a href="about.html">关于我们</a>
+                    <a href="team.html">研究团队</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+                <div class="footer-col">
+                    <h4>研究方向</h4>
+                    <a href="research.html#thermoelectric">热电材料</a>
+                    <a href="research.html#mof">金属-有机框架</a>
+                    <a href="research.html#powder">先进粉体</a>
+                    <a href="research.html#synthesis">农药天然产物合成</a>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <span>📧 contact@epsri.org</span>
+                    <span>🌐 www.epsri.org</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Eastern Pacific Science Research Institute (EPSRI). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/particles.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>

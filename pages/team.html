@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究团队 | 东太平洋科学研究院 EPSRI</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <style>
+        /* ── 团队页面通用 ── */
+        .team-section { padding: 60px 40px 80px; max-width: 1400px; margin: 0 auto; }
+        .team-section-header { text-align: center; margin-bottom: 56px; }
+        .team-section-header .section-tag { font-size: 11px; letter-spacing: 4px; color: #00b4ff; font-family: 'Orbitron', monospace; margin-bottom: 12px; }
+        .team-section-header h2 { font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+        .team-section-header p { font-size: 14px; color: #8aabcc; max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+        /* ── 院士区块 ── */
+        .academician-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 56px; }
+        .academician-card {
+            background: linear-gradient(135deg, #0a1628 0%, #080f20 100%);
+            border: 1px solid rgba(255, 170, 0, 0.4);
+            border-radius: 14px;
+            padding: 32px;
+            display: flex;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .academician-card:hover { border-color: rgba(255, 170, 0, 0.7); transform: translateY(-4px); }
+        .academician-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,170,0,0.6), transparent);
+        }
+        .academician-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a2a4a, #0a1a3a);
+            border: 2px solid rgba(255,170,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .academician-info { flex: 1; }
+        .academician-badge-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #ffaa00;
+            background: rgba(255,170,0,0.15);
+            border: 1px solid rgba(255,170,0,0.35);
+            border-radius: 4px;
+            padding: 3px 10px;
+            margin-bottom: 10px;
+        }
+        .academician-name { font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+        .academician-title { font-size: 13px; color: #8aabcc; margin-bottom: 14px; }
+        .academician-desc { font-size: 13px; color: #b0c8e0; line-height: 1.8; margin-bottom: 14px; }
+        .research-areas { display: flex; flex-wrap: wrap; gap: 6px; }
+        .area-tag {
+            font-size: 11px;
+            color: #00b4ff;
+            background: rgba(0,180,255,0.1);
+            border: 1px solid rgba(0,180,255,0.25);
+            border-radius: 4px;
+            padding: 3px 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── PI 区块 ── */
+        .pi-section-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #00b4ff;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .pi-section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0,180,255,0.4), transparent);
+        }
+        .pi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 56px; }
+        .pi-card {
+            background: #0a1628;
+            border: 1px solid rgba(0,180,255,0.25);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+        .pi-card:hover { border-color: rgba(0,180,255,0.5); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,180,255,0.08); }
+        .pi-header { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
+        .pi-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d1e3a, #162840);
+            border: 1px solid rgba(0,180,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .pi-name { font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 3px; }
+        .pi-title { font-size: 12px; color: #00b4ff; margin-bottom: 8px; }
+        .pi-direction-tag {
+            display: inline-block;
+            font-size: 10px;
+            color: #64b0e0;
+            background: rgba(0,100,200,0.1);
+            border: 1px solid rgba(0,100,200,0.25);
+            border-radius: 4px;
+            padding: 2px 8px;
+            letter-spacing: 0.5px;
+        }
+        .pi-desc { font-size: 13px; color: #8aabcc; line-height: 1.75; margin-bottom: 12px; }
+        .pi-papers { font-size: 12px; color: #6a8aaa; }
+        .pi-papers strong { color: #00b4ff; }
+        .pi-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+        .pi-tag { font-size: 11px; color: #8aabcc; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 2px 8px; }
+
+        /* ── 博士后区块 ── */
+        .postdoc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+        .postdoc-card {
+            background: rgba(10,22,40,0.7);
+            border: 1px solid rgba(0,180,255,0.15);
+            border-radius: 8px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s;
+        }
+        .postdoc-card:hover { border-color: rgba(0,180,255,0.35); background: #0a1628; }
+        .postdoc-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(0,180,255,0.08);
+            border: 1px solid rgba(0,180,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .postdoc-name { font-size: 14px; font-weight: 600; color: #d8e8f8; }
+        .postdoc-dir { font-size: 11px; color: #6a8aaa; margin-top: 3px; }
+        .postdoc-univ { font-size: 11px; color: #4a6a8a; margin-top: 3px; }
+
+        /* ── 团队数据 ── */
+        .team-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(0,180,255,0.1);
+            border: 1px solid rgba(0,180,255,0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 56px;
+        }
+        .team-stat-item {
+            background: #0a1628;
+            text-align: center;
+            padding: 24px 16px;
+        }
+        .team-stat-n {
+            font-family: 'Orbitron', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            color: #00b4ff;
+            display: block;
+            line-height: 1;
+        }
+        .team-stat-l {
+            font-size: 12px;
+            color: #8aabcc;
+            margin-top: 8px;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 900px) {
+            .academician-row { grid-template-columns: 1fr; }
+            .team-stats-row { grid-template-columns: repeat(2, 1fr); }
+            .team-section { padding: 40px 20px 60px; }
+        }
+        @media (max-width: 600px) {
+            .team-stats-row { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-container"></div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.5" transform="rotate(30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-cn">东太平洋科学研究院</span>
+                    <span class="logo-en">EPSRI</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">首页</a>
+                <a href="research.html" class="nav-link">研究方向</a>
+                <a href="publications.html" class="nav-link">最新文献</a>
+                <a href="team.html" class="nav-link active">研究团队</a>
+                <a href="about.html" class="nav-link">关于我们</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div>
+            <span class="page-header-tag">RESEARCH TEAM</span>
+            <h1>研究团队</h1>
+            <p>汇聚全球顶尖科学家，专注化学前沿领域的创新研究</p>
+        </div>
+    </section>
+
+    <!-- 团队数据概览 -->
+    <div class="team-section">
+        <div class="team-stats-row">
+            <div class="team-stat-item">
+                <span class="team-stat-n">25</span>
+                <span class="team-stat-l">研究人员</span>
+            </div>
+            <div class="team-stat-item">
+                <span class="team-stat-n">2</span>
+                <span class="team-stat-l">两院院士</span>
+            </div>
+            <div class="team-stat-item">
+                <span class="team-stat-n">6</span>
+                <span class="team-stat-l">研究方向 PI</span>
+            </div>
+            <div class="team-stat-item">
+                <span class="team-stat-n">10</span>
+                <span class="team-stat-l">合作机构</span>
+            </div>
+        </div>
+
+        <!-- 院士团队 -->
+        <div class="team-section-header">
+            <div class="section-tag">ACADEMIC LEADERS</div>
+            <h2>学术领袖</h2>
+            <p>国际知名科学家领衔，把握研究方向，制定科学战略</p>
+        </div>
+        <div class="academician-row">
+            <div class="academician-card">
+                <div class="academician-avatar">🔬</div>
+                <div class="academician-info">
+                    <div class="academician-badge-tag">👑 院士</div>
+                    <div class="academician-name">梁大金</div>
+                    <div class="academician-title">EPSRI 副院长 · 热电材料首席科学家</div>
+                    <div class="academician-desc">
+                        国际知名热电材料专家，在 Bi₂Te₃ 多尺度结构设计和热电输运机制方面有深厚积累。领导团队在《Science》《Nature Energy》等顶级期刊发表论文 80 余篇，引用超 12,000 次，H-index 52。研究方向涵盖热电材料、能量转换与器件集成。入选国家高层次人才计划，享受国务院特殊津贴。
+                    </div>
+                    <div class="research-areas">
+                        <span class="area-tag">热电材料</span>
+                        <span class="area-tag">能量转换</span>
+                        <span class="area-tag">器件工程</span>
+                    </div>
+                </div>
+            </div>
+            <div class="academician-card">
+                <div class="academician-avatar">🧪</div>
+                <div class="academician-info">
+                    <div class="academician-badge-tag">👑 院士</div>
+                    <div class="academician-name">林忠杰</div>
+                    <div class="academician-title">EPSRI 副院长 · MOF 与合成化学首席科学家</div>
+                    <div class="academician-desc">
+                        国际著名金属有机框架与合成化学专家，在 MOF 材料的精准合成、气体吸附分离和绿色催化领域做出了开创性贡献。在《Science》《JACS》《Angew. Chem.》发表论文 120 余篇，引用超 18,000 次，H-index 65。兼任多本国际期刊编委，主持国家重点研发计划项目 3 项。
+                    </div>
+                    <div class="research-areas">
+                        <span class="area-tag">MOF 材料</span>
+                        <span class="area-tag">绿色合成</span>
+                        <span class="area-tag">天然产物</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PI 团队 -->
+        <div class="pi-section-label">PRINCIPAL INVESTIGATORS</div>
+        <div class="pi-grid">
+            <div class="pi-card">
+                <div class="pi-header">
+                    <div class="pi-avatar">⚡</div>
+                    <div>
+                        <div class="pi-name">陈睿</div>
+                        <div class="pi-title">PI · 副教授 · 博士生导师</div>
+                        <span class="pi-direction-tag">热电材料 / 先进粉体</span>
+                    </div>
+                </div>
+                <div class="pi-desc">专注于新型热电材料探索与纳米粉体制备技术，开发高熵合金和 Weyl 半金属热电材料。在 <em>Advanced Materials</em>、<em>Nature Communications</em> 等期刊发表论文 30 余篇。主持国家自然科学基金 2 项。</div>
+                <div class="pi-papers"><strong>25+</strong> 论文 · 引用 <strong>2,800+</strong></div>
+                <div class="pi-tags">
+                    <span class="pi-tag">高熵材料</span><span class="pi-tag">纳米制备</span><span class="pi-tag">机械化学</span>
+                </div>
+            </div>
+
+            <div class="pi-card">
+                <div class="pi-header">
+                    <div class="pi-avatar">🌱</div>
+                    <div>
+                        <div class="pi-name">李明</div>
+                        <div class="pi-title">PI · 副研究员 · 硕士生导师</div>
+                        <span class="pi-direction-tag">先进粉体 / 能源材料</span>
+                    </div>
+                </div>
+                <div class="pi-desc">专注先进粉体材料的机械化学合成与规模化制备，包括高熵合金粉体、稀土氧化物纳米粉体等。研究成果获省部级科技奖 1 项，授权发明专利 5 项。</div>
+                <div class="pi-papers"><strong>18+</strong> 论文 · 引用 <strong>1,600+</strong></div>
+                <div class="pi-tags">
+                    <span class="pi-tag">球磨技术</span><span class="pi-tag">高熵合金</span><span class="pi-tag">储氢材料</span>
+                </div>
+            </div>
+
+            <div class="pi-card">
+                <div class="pi-header">
+                    <div class="pi-avatar">🔗</div>
+                    <div>
+                        <div class="pi-name">王莉</div>
+                        <div class="pi-title">PI · 副研究员 · 硕士生导师</div>
+                        <span class="pi-direction-tag">MOF / 气体吸附分离</span>
+                    </div>
+                </div>
+                <div class="pi-desc">专注于功能 MOF 材料的设计合成与工业应用研究，在 CO₂ 捕获、甲烷存储和选择性分离方向成果突出。与多家能源企业建立产学研合作。</div>
+                <div class="pi-papers"><strong>22+</strong> 论文 · 引用 <strong>3,200+</strong></div>
+                <div class="pi-tags">
+                    <span class="pi-tag">CO₂ 捕获</span><span class="pi-tag">气体分离</span><span class="pi-tag">MOF 膜</span>
+                </div>
+            </div>
+
+            <div class="pi-card">
+                <div class="pi-header">
+                    <div class="pi-avatar">💊</div>
+                    <div>
+                        <div class="pi-name">张薇</div>
+                        <div class="pi-title">PI · 副研究员 · 硕士生导师</div>
+                        <span class="pi-direction-tag">农药合成 / 天然产物</span>
+                    </div>
+                </div>
+                <div class="pi-desc">专注绿色农药与天然产物合成，开发了多条光催化和生物催化合成路线。获中国化学会青年化学奖，主持企业横向课题 3 项，成果已实现产业化转化。</div>
+                <div class="pi-papers"><strong>15+</strong> 论文 · 引用 <strong>980+</strong></div>
+                <div class="pi-tags">
+                    <span class="pi-tag">光催化</span><span class="pi-tag">生物催化</span><span class="pi-tag">农药化学</span>
+                </div>
+            </div>
+
+            <div class="pi-card">
+                <div class="pi-header">
+                    <div class="pi-avatar">☀️</div>
+                    <div>
+                        <div class="pi-name">孙琪</div>
+                        <div class="pi-title">PI · 助理研究员</div>
+                        <span class="pi-direction-tag">先进粉体 / MXene</span>
+                    </div>
+                </div>
+                <div class="pi-desc">专注于二维材料（MXene）与先进粉体的可控制备及其在能源存储和电磁屏蔽中的应用研究。</div>
+                <div class="pi-papers"><strong>12+</strong> 论文 · 引用 <strong>760+</strong></div>
+                <div class="pi-tags">
+                    <span class="pi-tag">MXene</span><span class="pi-tag">电化学储能</span><span class="pi-tag">电磁屏蔽</span>
+                </div>
+            </div>
+
+            <div class="pi-card">
+                <div class="pi-header">
+                    <div class="pi-avatar">🌿</div>
+                    <div>
+                        <div class="pi-name">赵敏</div>
+                        <div class="pi-title">PI · 助理研究员</div>
+                        <span class="pi-direction-tag">MOF / 光催化</span>
+                    </div>
+                </div>
+                <div class="pi-desc">专注于 MOF 基光催化材料的构建及太阳燃料合成，探索 MOF/半导体异质结在 CO₂ 光还原和水分解中的应用。</div>
+                <div class="pi-papers"><strong>10+</strong> 论文 · 引用 <strong>650+</strong></div>
+                <div class="pi-tags">
+                    <span class="pi-tag">光催化</span><span class="pi-tag">太阳燃料</span><span class="pi-tag">CO₂ 还原</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 博士后团队 -->
+        <div class="pi-section-label">POSTDOCTORAL RESEARCHERS</div>
+        <div class="postdoc-grid">
+            <div class="postdoc-card"><div class="postdoc-avatar">🧪</div><div><div class="postdoc-name">周明远</div><div class="postdoc-dir">热电材料</div><div class="postdoc-univ">斯坦福大学联合培养</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">⚗️</div><div><div class="postdoc-name">黄思远</div><div class="postdoc-dir">MOF 合成</div><div class="postdoc-univ">MIT 联合培养</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">🔬</div><div><div class="postdoc-name">吴佳琪</div><div class="postdoc-dir">先进粉体</div><div class="postdoc-univ">剑桥大学联合培养</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">💊</div><div><div class="postdoc-name">张晓蕾</div><div class="postdoc-dir">农药合成</div><div class="postdoc-univ">东京大学联合培养</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">⚡</div><div><div class="postdoc-name">李博闻</div><div class="postdoc-dir">热电器件</div><div class="postdoc-univ">苏黎世联邦理工</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">🌱</div><div><div class="postdoc-name">王天翔</div><div class="postdoc-dir">气体吸附</div><div class="postdoc-univ">加州理工联合培养</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">🔗</div><div><div class="postdoc-name">陈子涵</div><div class="postdoc-dir">MOF 催化</div><div class="postdoc-univ">牛津大学联合培养</div></div></div>
+            <div class="postdoc-card"><div class="postdoc-avatar">🌿</div><div><div class="postdoc-name">刘诗雨</div><div class="postdoc-dir">生物催化</div><div class="postdoc-univ">帝国理工学院</div></div></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                    <div>
+                        <div class="footer-logo-cn">东太平洋科学研究院</div>
+                        <div class="footer-logo-en">EPSRI</div>
+                    </div>
+                </div>
+                <p class="footer-desc">致力于化学前沿研究，推动科学技术进步。</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <a href="../index.html">首页</a>
+                    <a href="research.html">研究方向</a>
+                    <a href="publications.html">最新文献</a>
+                    <a href="team.html">研究团队</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+                <div class="footer-col">
+                    <h4>研究方向</h4>
+                    <a href="research.html#thermoelectric">热电材料</a>
+                    <a href="research.html#mof">金属-有机框架</a>
+                    <a href="research.html#powder">先进粉体</a>
+                    <a href="research.html#synthesis">农药天然产物合成</a>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <span>📧 contact@epsri.org</span>
+                    <span>🌐 www.epsri.org</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Eastern Pacific Science Research Institute (EPSRI). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/particles.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>

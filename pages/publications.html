@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文库 | 东太平洋科学研究院 EPSRI</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <style>
+        .pub-grid-inner { display: flex; flex-direction: column; gap: 24px; }
+        .pub-grid { min-height: 400px; }
+        /* skeleton 骨架屏 */
+        .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(0,180,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+            background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; border-radius: 6px; }
+        @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+        .skeleton-meta { height: 20px; width: 250px; margin-bottom: 12px; }
+        .skeleton-title { height: 22px; width: 90%; margin-bottom: 10px; }
+        .skeleton-text { height: 14px; width: 100%; margin-bottom: 6px; }
+        .skeleton-text.short { width: 60%; }
+        /* 动态渲染卡片 —— 高对比配色 */
+        .pub-card {
+            padding: 28px 30px;
+            background: #0a1628;
+            border: 1px solid rgba(0,180,255,0.3);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 0;
+            color: #d8e8f8;
+        }
+        .pub-card:hover { border-color: rgba(0,180,255,0.55); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,180,255,0.12); }
+        .pub-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+        .pub-journal { font-size: 12.5px; font-weight: 700; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 4px; border: 1px solid; }
+        .pub-year { font-size: 13px; color: #8aabcc; font-family: 'Orbitron', monospace; }
+        .pub-citations { font-size: 12px; color: #8aabcc; font-family: 'Orbitron', monospace; display: flex; align-items: center; gap: 4px; margin-left: auto; }
+        .pub-title { font-size: 17px; font-weight: 700; line-height: 1.5; margin-bottom: 8px; color: #ffffff; }
+        .pub-title a { color: #e8f4ff; transition: color 0.2s; }
+        .pub-title a:hover { color: #00b4ff; }
+        .pub-authors { font-size: 13px; color: #a0b8d0; margin-bottom: 12px; }
+        .pub-abstract { font-size: 13px; color: #8a9eaf !important; line-height: 1.75; }
+        .pub-direction-tag { display: inline-block; font-size: 11px; color: #00b4ff; background: rgba(0,180,255,0.1);
+            border: 1px solid rgba(0,180,255,0.25); border-radius: 4px; padding: 3px 10px; margin-top: 12px; letter-spacing: 0.5px; }
+        /* 筛选按钮 */
+        .pub-filters { display: flex; gap: 10px; margin-bottom: 36px; flex-wrap: wrap; }
+        .pub-filter { padding: 8px 22px; border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px;
+            color: #8aabcc; background: transparent; border: 1px solid rgba(0,180,255,0.25);
+            cursor: pointer; transition: all 0.3s ease; font-family: 'Noto Sans SC', sans-serif; }
+        .pub-filter:hover, .pub-filter.active { color: #00b4ff; border-color: #00b4ff; background: rgba(0,180,255,0.1); }
+        .data-info { font-size: 12px; color: #6a8aaa; margin-bottom: 16px; letter-spacing: 0.3px; }
+
+        /* 论文统计概览 */
+        .pub-stats-bar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+            padding: 20px 24px;
+            background: #0a1628;
+            border: 1px solid rgba(0,180,255,0.25);
+            border-radius: 10px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 8px 4px;
+        }
+        .stat-card .stat-n {
+            font-family: 'Orbitron', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #00b4ff;
+            display: block;
+        }
+        .stat-card .stat-l {
+            font-size: 11px;
+            color: #8aabcc;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+        .stat-divider {
+            width: 1px;
+            background: rgba(0,180,255,0.15);
+            align-self: stretch;
+        }
+        /* 年份筛选器 */
+        .year-filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .year-filter-label {
+            font-size: 12px;
+            color: #6a8aaa;
+            margin-right: 4px;
+            letter-spacing: 0.5px;
+        }
+        .year-btn {
+            padding: 5px 14px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #8aabcc;
+            background: transparent;
+            border: 1px solid rgba(0,180,255,0.2);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .year-btn:hover, .year-btn.active {
+            color: #00b4ff;
+            border-color: rgba(0,180,255,0.5);
+            background: rgba(0,180,255,0.08);
+        }
+        /* 期刊级别标签 */
+        .journal-tier {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+        .journal-tier.tier-top { background: rgba(255,68,68,0.15); color: #ff6b6b; border: 1px solid rgba(255,68,68,0.3); }
+        .journal-tier.tier-high { background: rgba(255,160,0,0.12); color: #ffa040; border: 1px solid rgba(255,160,0,0.3); }
+        .journal-tier.tier-good { background: rgba(0,100,200,0.1); color: #64b0e0; border: 1px solid rgba(0,100,200,0.25); }
+    </style>
+</head>
+<body>
+    <div id="particles-container"></div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.5" transform="rotate(30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-cn">东太平洋科学研究院</span>
+                    <span class="logo-en">EPSRI</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">首页</a>
+                <a href="research.html" class="nav-link">研究方向</a>
+                <a href="team.html" class="nav-link">研究团队</a>
+                <a href="publications.html" class="nav-link active">论文库</a>
+                <a href="news.html" class="nav-link">新闻动态</a>
+                <a href="join-us.html" class="nav-link">加入我们</a>
+                <a href="about.html" class="nav-link">关于我们</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div>
+            <span class="page-header-tag">PUBLICATIONS</span>
+            <h1>论文库</h1>
+            <p>我院在国际顶级期刊发表的最新研究成果，持续推动化学前沿科学进步</p>
+        </div>
+    </section>
+
+    <section style="padding:40px 40px 100px;">
+        <div class="content-section">
+            <!-- 论文统计概览 -->
+            <div class="pub-stats-bar" id="pub-stats-bar">
+                <div class="stat-card">
+                    <span class="stat-n" id="stat-total">—</span>
+                    <span class="stat-l">论文总数</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="stat-n" id="stat-high">—</span>
+                    <span class="stat-l">高引论文<br><span style="font-size:10px;color:#5a7a9a">(引用≥50)</span></span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="stat-n" id="stat-2025">—</span>
+                    <span class="stat-l">2025年发表</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="stat-n" id="stat-top">—</span>
+                    <span class="stat-l">顶刊论文<br><span style="font-size:10px;color:#5a7a9a">(CNS/Nature子刊)</span></span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="stat-n" id="stat-citations">—</span>
+                    <span class="stat-l">总引用数</span>
+                </div>
+            </div>
+
+            <!-- 方向筛选 -->
+            <div class="pub-filters">
+                <button class="pub-filter active" data-filter="all">全部</button>
+                <button class="pub-filter" data-filter="thermoelectric">热电材料</button>
+                <button class="pub-filter" data-filter="mof">金属-有机框架</button>
+                <button class="pub-filter" data-filter="powder">先进粉体</button>
+                <button class="pub-filter" data-filter="synthesis">农药天然产物</button>
+            </div>
+
+            <!-- 年份筛选 -->
+            <div class="year-filter-bar">
+                <span class="year-filter-label">年份</span>
+                <button class="year-btn active" data-year="all">全部</button>
+                <button class="year-btn" data-year="2025">2025</button>
+                <button class="year-btn" data-year="2024">2024</button>
+            </div>
+
+            <div class="data-info" id="data-info"></div>
+            <div class="pub-grid" id="pub-grid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                    <div>
+                        <div class="footer-logo-cn">东太平洋科学研究院</div>
+                        <div class="footer-logo-en">EPSRI</div>
+                    </div>
+                </div>
+                <p class="footer-desc">致力于化学前沿研究，推动科学技术进步。</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <a href="../index.html">首页</a>
+                    <a href="research.html">研究方向</a>
+                    <a href="publications.html">最新文献</a>
+                    <a href="team.html">研究团队</a>
+                    <a href="about.html">关于我们</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+                <div class="footer-col">
+                    <h4>研究方向</h4>
+                    <a href="research.html#thermoelectric">热电材料</a>
+                    <a href="research.html#mof">金属-有机框架</a>
+                    <a href="research.html#powder">先进粉体</a>
+                    <a href="research.html#synthesis">农药天然产物合成</a>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <span>📧 contact@epsri.org</span>
+                    <span>🌐 www.epsri.org</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Eastern Pacific Science Research Institute (EPSRI). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/data-loader.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/particles.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>

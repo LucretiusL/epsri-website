@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东太平洋科学研究院 | EPSRI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <!-- SEO & Social -->
+    <meta name="description" content="东太平洋科学研究院（EPSRI）—聚焦热电材料、金属-有机框架、先进粉体、农药天然产物合成四大化学前沿方向，发布最新研究成果。">
+    <meta name="keywords" content="EPSRI,东太平洋科学研究院,热电材料,MOF,先进粉体,农药天然产物,化学研究">
+    <meta property="og:title" content="东太平洋科学研究院 | EPSRI">
+    <meta property="og:description" content="探索化学前沿，驱动科技未来。聚焦热电材料、MOF、先进粉体、农药天然产物合成。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lucretiusl.github.io/epsri-website/">
+    <meta property="og:image" content="https://lucretiusl.github.io/epsri-website/images/favicon.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="东太平洋科学研究院 | EPSRI">
+    <meta name="twitter:description" content="探索化学前沿，驱动科技未来">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-container"></div>
+    
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <circle cx="30" cy="30" r="15" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.4"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.5" transform="rotate(30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                        <circle cx="30" cy="5" r="2.5" fill="#7b2fff"/>
+                        <circle cx="54" cy="42" r="2" fill="#00d4ff"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-cn">东太平洋科学研究院</span>
+                    <span class="logo-en">EPSRI</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active">首页</a>
+                <a href="pages/research.html" class="nav-link">研究方向</a>
+                <a href="pages/team.html" class="nav-link">研究团队</a>
+                <a href="pages/publications.html" class="nav-link">论文库</a>
+                <a href="pages/news.html" class="nav-link">新闻动态</a>
+                <a href="pages/join-us.html" class="nav-link">加入我们</a>
+                <a href="pages/about.html" class="nav-link">关于我们</a>
+                <a href="pages/contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hex-grid"></div>
+            <div class="energy-orb orb1"></div>
+            <div class="energy-orb orb2"></div>
+            <div class="energy-orb orb3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">SCIENCE · INNOVATION · DISCOVERY</div>
+            <h1 class="hero-title">
+                <span class="title-cn glitch" data-text="东太平洋科学研究院">东太平洋科学研究院</span>
+                <span class="title-divider"></span>
+                <span class="title-en">Eastern Pacific Science Research Institute</span>
+            </h1>
+            <p class="hero-subtitle">探索化学前沿，驱动科技未来 | Exploring Chemical Frontiers, Driving the Future</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num" data-target="4">0</span>
+                    <span class="stat-label">核心研究方向</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="52">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">发表论文</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="25">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">研究人员</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="12">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">合作机构</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num" data-target="8">0</span><span class="stat-plus">k</span>
+                    <span class="stat-label">总引用数</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="pages/research.html" class="btn-primary">探索研究方向</a>
+                <a href="pages/publications.html" class="btn-secondary">查看最新文献</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse-icon"><div class="scroll-wheel"></div></div>
+            <span>向下滚动</span>
+        </div>
+    </section>
+
+    <!-- 研究方向预览 -->
+    <section class="research-preview">
+        <div class="section-header">
+            <div class="section-tag">RESEARCH AREAS</div>
+            <h2 class="section-title">核心研究方向</h2>
+            <p class="section-desc">聚焦化学前沿，突破科技边界</p>
+        </div>
+        <div class="research-grid">
+            <div class="research-card" data-index="01">
+                <div class="card-glow"></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,5 70,22 70,58 40,75 10,58 10,22" stroke="#ff6b35" stroke-width="2" fill="none" opacity="0.6"/>
+                        <polygon points="40,15 62,27 62,53 40,65 18,53 18,27" stroke="#ff6b35" stroke-width="1" fill="none" opacity="0.4"/>
+                        <circle cx="40" cy="40" r="8" fill="#ff6b35" opacity="0.8"/>
+                        <line x1="40" y1="5" x2="40" y2="15" stroke="#ff6b35" stroke-width="2"/>
+                        <line x1="70" y1="22" x2="62" y2="27" stroke="#ff6b35" stroke-width="2"/>
+                        <line x1="10" y1="22" x2="18" y2="27" stroke="#ff6b35" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="card-number">01</div>
+                <h3 class="card-title">热电材料</h3>
+                <h4 class="card-subtitle">Thermoelectric Materials</h4>
+                <p class="card-desc">研究高效热电转换材料，实现废热能量的直接转化，推进清洁能源技术革命。</p>
+                <a href="pages/research.html#thermoelectric" class="card-link">深入了解 →</a>
+            </div>
+
+            <div class="research-card" data-index="02">
+                <div class="card-glow"></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="25" width="30" height="30" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.5" transform="rotate(45 40 40)"/>
+                        <rect x="15" y="15" width="50" height="50" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.3" transform="rotate(45 40 40)"/>
+                        <circle cx="40" cy="40" r="5" fill="#00d4ff"/>
+                        <circle cx="40" cy="18" r="3" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="62" cy="40" r="3" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="40" cy="62" r="3" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="18" cy="40" r="3" fill="#00d4ff" opacity="0.7"/>
+                        <line x1="40" y1="35" x2="40" y2="18" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                        <line x1="45" y1="40" x2="62" y2="40" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                        <line x1="40" y1="45" x2="40" y2="62" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                        <line x1="35" y1="40" x2="18" y2="40" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                    </svg>
+                </div>
+                <div class="card-number">02</div>
+                <h3 class="card-title">金属-有机框架</h3>
+                <h4 class="card-subtitle">Metal-Organic Frameworks</h4>
+                <p class="card-desc">探索MOF材料的合成、功能化及应用，覆盖气体储存、分离和催化等前沿领域。</p>
+                <a href="pages/research.html#mof" class="card-link">深入了解 →</a>
+            </div>
+
+            <div class="research-card" data-index="03">
+                <div class="card-glow"></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="20" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                        <circle cx="40" cy="40" r="12" stroke="#7b2fff" stroke-width="1" fill="none" opacity="0.4"/>
+                        <circle cx="40" cy="40" r="5" fill="#7b2fff"/>
+                        <circle cx="40" cy="20" r="4" fill="#7b2fff" opacity="0.6"/>
+                        <circle cx="57" cy="50" r="4" fill="#7b2fff" opacity="0.6"/>
+                        <circle cx="23" cy="50" r="4" fill="#7b2fff" opacity="0.6"/>
+                        <line x1="40" y1="24" x2="40" y2="35" stroke="#7b2fff" stroke-width="1.5" opacity="0.7"/>
+                        <line x1="53" y1="47" x2="45" y2="42" stroke="#7b2fff" stroke-width="1.5" opacity="0.7"/>
+                        <line x1="27" y1="47" x2="35" y2="42" stroke="#7b2fff" stroke-width="1.5" opacity="0.7"/>
+                    </svg>
+                </div>
+                <div class="card-number">03</div>
+                <h3 class="card-title">先进粉体</h3>
+                <h4 class="card-subtitle">Advanced Powder Materials</h4>
+                <p class="card-desc">开发纳米级至微米级先进粉体材料，应用于能源、电子、生物医学等高技术领域。</p>
+                <a href="pages/research.html#powder" class="card-link">深入了解 →</a>
+            </div>
+
+            <div class="research-card" data-index="04">
+                <div class="card-glow"></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20,60 Q30,20 40,40 Q50,60 60,30" stroke="#00ff88" stroke-width="2" fill="none" opacity="0.8"/>
+                        <circle cx="20" cy="60" r="4" fill="#00ff88"/>
+                        <circle cx="40" cy="40" r="4" fill="#00ff88"/>
+                        <circle cx="60" cy="30" r="4" fill="#00ff88"/>
+                        <path d="M30,35 L45,25 L55,40" stroke="#00ff88" stroke-width="1.5" fill="none" opacity="0.5"/>
+                        <circle cx="30" cy="35" r="3" fill="#00ff88" opacity="0.5"/>
+                        <circle cx="45" cy="25" r="3" fill="#00ff88" opacity="0.5"/>
+                    </svg>
+                </div>
+                <div class="card-number">04</div>
+                <h3 class="card-title">农药天然产物合成</h3>
+                <h4 class="card-subtitle">Pesticide & Natural Product Synthesis</h4>
+                <p class="card-desc">创新农药与天然产物合成路线，开发高效低毒的新型绿色农药及生物活性分子。</p>
+                <a href="pages/research.html#synthesis" class="card-link">深入了解 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 科研亮点 -->
+    <section style="padding:80px 40px; background:rgba(5,14,30,0.4); border-top:1px solid rgba(0,180,255,0.08); border-bottom:1px solid rgba(0,180,255,0.08);">
+        <div style="max-width:1400px; margin:0 auto;">
+            <div class="section-header" style="margin-bottom:40px;">
+                <div class="section-tag">RESEARCH HIGHLIGHTS</div>
+                <h2 class="section-title">近期科研亮点</h2>
+                <p style="color:var(--text-muted); font-size:13px; margin-top:8px;">代表论文 · 高引成果 · 产业转化</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
+                <div style="background:#0a1628; border:1px solid rgba(255,68,68,0.3); border-radius:12px; padding:24px; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, transparent, rgba(255,68,68,0.7), transparent);"></div>
+                    <div style="font-size:11px; color:#ff6b6b; font-weight:700; letter-spacing:1px; margin-bottom:10px;">★ 最高引用</div>
+                    <div style="font-size:12px; color:#8aabcc; margin-bottom:6px;">Science · 2025 · 梁大金 院士</div>
+                    <div style="font-size:14px; color:#d8e8f8; font-weight:700; line-height:1.5; margin-bottom:10px;">All-scale hierarchical structuring of Bi₂Te₃ for record ZT > 2.0</div>
+                    <div style="font-size:12px; color:#6a8aaa;">引用 <strong style="color:#00b4ff;">312</strong> 次 · 热电材料领域里程碑</div>
+                    <a href="pages/publications.html" style="display:inline-block; margin-top:12px; font-size:12px; color:#00b4ff; text-decoration:none;">查看详情 →</a>
+                </div>
+                <div style="background:#0a1628; border:1px solid rgba(255,160,0,0.3); border-radius:12px; padding:24px; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, transparent, rgba(255,160,0,0.7), transparent);"></div>
+                    <div style="font-size:11px; color:#ffa040; font-weight:700; letter-spacing:1px; margin-bottom:10px;">⭐ 产业化突破</div>
+                    <div style="font-size:12px; color:#8aabcc; margin-bottom:6px;">Joule · 2025 · 热电材料组</div>
+                    <div style="font-size:14px; color:#d8e8f8; font-weight:700; line-height:1.5; margin-bottom:10px;">Thermoelectric module with 15% conversion efficiency for industrial waste heat recovery</div>
+                    <div style="font-size:12px; color:#6a8aaa;">工业余热回收效率纪录 · 10,000小时稳定性验证</div>
+                    <a href="pages/publications.html" style="display:inline-block; margin-top:12px; font-size:12px; color:#ffa040; text-decoration:none;">查看详情 →</a>
+                </div>
+                <div style="background:#0a1628; border:1px solid rgba(0,180,255,0.3); border-radius:12px; padding:24px; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, transparent, rgba(0,180,255,0.7), transparent);"></div>
+                    <div style="font-size:11px; color:#00b4ff; font-weight:700; letter-spacing:1px; margin-bottom:10px;">🧪 前沿探索</div>
+                    <div style="font-size:12px; color:#8aabcc; margin-bottom:6px;">Nature Catalysis · 2025 · 先进粉体组</div>
+                    <div style="font-size:14px; color:#d8e8f8; font-weight:700; line-height:1.5; margin-bottom:10px;">Core-shell high-entropy oxide nanoparticles for oxygen evolution catalysis</div>
+                    <div style="font-size:12px; color:#6a8aaa;">1000小时稳定性 · 180mV 过电位 · 绿氢制备</div>
+                    <a href="pages/publications.html" style="display:inline-block; margin-top:12px; font-size:12px; color:#00b4ff; text-decoration:none;">查看详情 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新动态 -->
+    <section class="news-section">
+        <div class="section-header">
+            <div class="section-tag">LATEST NEWS</div>
+            <h2 class="section-title">最新动态</h2>
+        </div>
+        <div class="news-grid">
+            <div class="news-card featured">
+                <div class="news-badge">最新发表</div>
+                <div class="news-date">2025.03</div>
+                <h3>新型Bi₂Te₃基热电材料实现ZT值突破2.0</h3>
+                <p>我院研究团队在《Nature Energy》发表最新成果，通过缺陷工程策略将热电性能提升至新高度，为废热回收技术带来重大突破。</p>
+                <a href="pages/publications.html" class="news-link">阅读详情 →</a>
+            </div>
+            <div class="news-card">
+                <div class="news-date">2025.02</div>
+                <h3>高比表面积MOF材料用于CO₂捕获</h3>
+                <p>研究团队合成了一种新型铜基MOF，BET比表面积达4800 m²/g，CO₂吸附量创新高。</p>
+                <a href="pages/publications.html" class="news-link">阅读详情 →</a>
+            </div>
+            <div class="news-card">
+                <div class="news-date">2025.01</div>
+                <h3>天然源农药靶向合成路线取得新进展</h3>
+                <p>我院课题组开发了一种高效不对称催化合成方法，成功制备多种具有生物活性的天然产物类似物。</p>
+                <a href="pages/publications.html" class="news-link">阅读详情 →</a>
+            </div>
+        <!-- 研究动态 / 行业新闻 -->
+        <section style="padding:80px 40px; background:rgba(0,8,24,0.5);">
+            <div style="max-width:1400px; margin:0 auto;">
+                <div class="section-header" style="margin-bottom:40px;">
+                    <div class="section-tag">RESEARCH NEWS</div>
+                    <h2 class="section-title">研究动态 & 行业资讯</h2>
+                    <p style="color:var(--text-muted); font-size:13px; margin-top:8px; letter-spacing:0.3px;">
+                        实时抓取 ChemistryWorld / ScienceDaily / Phys.org — 仅显示研究方向相关内容
+                    </p>
+                </div>
+                <div id="news-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; min-height:200px;"></div>
+            </div>
+        </section>
+    <！-- 合作伙伴 -->
+    <section class="partners-section">
+        <div class="section-header">
+            <div class="section-tag">COLLABORATIONS</div>
+            <h2 class="section-title">合作机构与伙伴</h2>
+        </div>
+        <div class="partners-track">
+            <div class="partners-slide">
+                <div class="partner-item">清华大学材料系</div>
+                <div class="partner-item">中科院化学研究所</div>
+                <div class="partner-item">中山大学化学学院</div>
+                <div class="partner-item">武汉大学化学院</div>
+                <div class="partner-item">MIT 材料科学系</div>
+                <div class="partner-item">德国马普固体研究所</div>
+                <div class="partner-item">比亚迪新能源技术研究院</div>
+                <div class="partner-item">先正达 Syngenta 中国</div>
+                <div class="partner-item">华为技术 · 材料技术部</div>
+                <div class="partner-item">宁波江丰电子材料</div>
+                <div class="partner-item">中化农业 MAP</div>
+                <div class="partner-item">中国远洋海运集团</div>
+                <!-- 复制以保证无缝循环 -->
+                <div class="partner-item">清华大学材料系</div>
+                <div class="partner-item">中科院化学研究所</div>
+                <div class="partner-item">中山大学化学学院</div>
+                <div class="partner-item">武汉大学化学院</div>
+                <div class="partner-item">MIT 材料科学系</div>
+                <div class="partner-item">德国马普固体研究所</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>加入我们，共创科学未来</h2>
+            <p>东太平洋科学研究院欢迎来自全球的优秀科研人员加入，共同探索化学前沿</p>
+            <div class="cta-actions">
+                <a href="pages/contact.html" class="btn-primary">联系我们</a>
+                <a href="pages/about.html" class="btn-outline">了解研究院</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <circle cx="30" cy="30" r="25" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.8" transform="rotate(-30 30 30)"/>
+                        <ellipse cx="30" cy="30" rx="28" ry="10" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.5" transform="rotate(30 30 30)"/>
+                        <circle cx="30" cy="30" r="4" fill="#00d4ff"/>
+                    </svg>
+                    <div>
+                        <div class="footer-logo-cn">东太平洋科学研究院</div>
+                        <div class="footer-logo-en">Eastern Pacific Science Research Institute</div>
+                    </div>
+                </div>
+                <p class="footer-desc">致力于化学前沿研究，推动科学技术进步，为人类社会可持续发展贡献力量。</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <a href="index.html">首页</a>
+                    <a href="pages/research.html">研究方向</a>
+                    <a href="pages/publications.html">最新文献</a>
+                    <a href="pages/team.html">研究团队</a>
+                    <a href="pages/about.html">关于我们</a>
+                    <a href="pages/contact.html">联系我们</a>
+                </div>
+                <div class="footer-col">
+                    <h4>研究方向</h4>
+                    <a href="pages/research.html#thermoelectric">热电材料</a>
+                    <a href="pages/research.html#mof">金属-有机框架</a>
+                    <a href="pages/research.html#powder">先进粉体</a>
+                    <a href="pages/research.html#synthesis">农药天然产物合成</a>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <span>📧 contact@epsri.org</span>
+                    <span>🌐 www.epsri.org</span>
+                    <span>📍 东太平洋科学城</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Eastern Pacific Science Research Institute (EPSRI). All Rights Reserved.</p>
+            <p>东太平洋科学研究院 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="js/data-loader.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
