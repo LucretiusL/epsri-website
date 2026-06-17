@@ -27,3 +27,26 @@
 | 梁大金 | 院士 · 副院长 | 热电材料与器件 |
 | 陈睿 | 有机合成 PI | 绿色农药合成 |
 | 李明 | 先进粉体 PI | 纳米粉体材料 |
+
+
+---
+
+## 期权量化分析终端
+
+网站新增面向 **588000 科创50ETF** 与 **159915 创业板ETF** 的期权量化分析页面：`pages/options.html`。
+
+- 支持 BSM 欧式定价、隐含波动率反解与 Delta/Gamma/Vega/Theta/Rho 等希腊值计算
+- 提供波动率微笑、期限结构、历史波动率估计器、策略收益图与压力测试热力图
+- 内置 Put/Call Ratio、Max Pain、VaR/CVaR、新闻事件雷达与 Web Search 入口
+- 采用 GitHub Pages 安全模式，预留 JSON 行情代理端点，不在前端保存 API Key
+
+> 本工具仅用于金融工程研究、教学演示与可视化展示，不构成投资建议。
+
+- 当前根路径 `index.html` 已切换为期权量化终端，原科研内容页面仍保留在 `pages/` 下。
+
+
+### 自动爬取数据同步
+
+- `.github/workflows/sync-options-data.yml` 会在 A 股交易时段按计划运行，也支持手动 `workflow_dispatch`。
+- `scripts/sync_options_data.py` 使用 AKShare 公开行情适配器抓取 588000 / 159915 的 ETF 行情、历史 K 线与期权链，并写入 `data/options-market.json`。
+- 前端会优先读取用户配置的 JSON 代理；未配置时读取 `data/options-market.json`；快照不可用时才回退到内置研究样本。

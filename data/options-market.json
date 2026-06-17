@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "mode": "FALLBACK_EMPTY",
+  "generatedAt": "2026-06-13T00:00:00+00:00",
+  "source": "Initial placeholder. GitHub Actions refreshes this file from public market adapters; frontend falls back to built-in research samples when empty.",
+  "symbols": {},
+  "errors": []
+}

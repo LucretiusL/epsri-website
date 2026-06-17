@@ -1,0 +1,43 @@
+name: Sync ETF options market data
+
+on:
+  schedule:
+    # A-share trading session refreshes, UTC times. GitHub may delay scheduled jobs.
+    - cron: "*/30 1-7 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-options-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install market-data adapters
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || echo "AKShare install failed; script will keep a fallback snapshot"
+
+      - name: Fetch latest ETF option snapshot
+        run: python scripts/sync_options_data.py --output data/options-market.json --allow-empty
+
+      - name: Commit refreshed snapshot
+        run: |
+          if git diff --quiet -- data/options-market.json; then
+            echo "No data changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/options-market.json
+          git commit -m "chore: sync ETF options market data"
+          git push
